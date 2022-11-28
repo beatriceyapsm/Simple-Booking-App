@@ -1,0 +1,11 @@
+{
+    "token": "token",
+    "refresh_token": "refreshtoken",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "client_id": "clientid",
+    "client_secret": "clientsecret",
+    "scopes": [
+        "https://www.googleapis.com/auth/calendar.readonly"
+    ],
+    "expiry": "expirydate"
+}
