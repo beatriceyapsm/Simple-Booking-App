@@ -25,20 +25,20 @@ Reference: https://developers.google.com/calendar/api/quickstart/js
 <li>To authenticate as an end user and access user data in your app, you need to create one or more OAuth 2.0 Client IDs. Configure consent screen: <a href="https://console.cloud.google.com/apis/credentials/consent">Link</a> > Configure Consent Screen > External > Key in App Name & User Support Email & Developers Email > Save and continue > Save and continue on scopes > Add your email to “Test Users” > Back to Dashboard</li>
 <li>Click Create Credentials > OAuth client ID. Click Application type > Web application. In the "Name" field, type a name for the credential. This name is only shown in the Google Cloud console. Add authorized URIs related to your app: Under Client-side apps, add: https://#yourgithubusername.github.io; Under server-side apps, add: http://localhost:8080/). Click Create. </li>
 <li>The OAuth client created screen appears, showing your new Client ID and Client secret. Download json and save as credentials.json in your repository.</li>
-
+<br>
 Step 4: Run py quickstart.py in your terminal. (I usually do this in Visual Studio Code.) 
 <li>You will likely face a Access blocked page with Error 400. Click on error details and copy the redirect_uri (http://localhost:XXXXX/). </li>
 <li>Go to Credentials in Google Cloud Console <a href="https://console.cloud.google.com/apis/credentials/">Link</a> >
 Click on the OAuth 2.0 Client ID created for this project. Under Authorized redirect URIs, add the localhost information you copied earlier. </li>
 <li>Go back to your terminal and click on the link provided to restart the authorization process. The page will now say "Google hasn't verified this app". Click continue until you reach a page that says "The authentication flow has completed". A token.json file will be created in your repository.</li>
-
+<br>
 Step 5: Run py create.py in your terminal. The page will say "Google hasn't verified this app". Click continue until you reach a page that says "The authentication flow has completed". A storage.json file will be created in your repository. Also, check and confirma that an event would have been created in your repository for 15 Dec 2022.
 
 Step 6: Push your updates to your github repo. Check that your workflow runs with no error under Actions in github.
 
 
 ### Workflow Diagram:
-
+<img src="https://github.com/beatriceyapsm/Simple-Booking-App/blob/main/PythonWorkflow.JPG">
 
 ### Further Applications:
 You can build a front-end interface to gather user inputs to create an event instead of triggering via a commit to github.
