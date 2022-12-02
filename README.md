@@ -2,6 +2,8 @@
 ### Outcome: 
 This project creates a new event in your google calendar with information in the file “events.py” when triggered by a new commit to this github repository.
 
+Test Site: https://beatriceyapsm.github.io/bookapptest/
+
 ### Use case: 
 If you wanted to give people a chance to add events to your calendar but not grant them full access to your gmail account, this app could come in useful. You will only need to add them as collaborators in github. 
 
