@@ -12,9 +12,10 @@ If you wanted to give people a chance to add events to your calendar but not gra
 4.	Wrote a python script “create.py” to create a test event referencing google calendar API documentation. Adapted the script to create events using the information from “events.py” file.
 5.	Wrote a workflow to run python script “create.py” whenever there is a commit to the repository. While troubleshooting the build errors, I included a dependencies file “requirements.txt” and installed them in the workflow. Ensure that the dependencies file is kept to the minimum required, otherwise the workflow will take very long to run.
 6.	Tested it by changing data in “events.py” file and realized that after a period of time, access tokens expire, resulting in an authorization error. This was fixed by generating a refresh token and ensuring that is updated in the “storage.json” file.
+7. Edited the files to utilize github secrets, add an gitignore file to ensure any google access files are not commited to github accidentally.
 
 ### To Use This Code:
-Step 1: Clone this repository and make it private as you will store client secrets for the app to work. I recommend working on this project with visual studio code. Link your repo in github to your visual studio code.
+Step 1: Clone this repository. I recommend working on this project with visual studio code.
 
 Step 2: In index.html, edit the iframe src to embed your google calendar (you can find this in settings and sharing for your google calendar. Under settings for your repository, go to pages and deploy from main branch to github pages. Your calendar will be hosted on https://#yourgithubusername.github.io/#yourreponame.
 
@@ -27,14 +28,14 @@ Reference: https://developers.google.com/calendar/api/quickstart/js
 <li>The OAuth client created screen appears, showing your new Client ID and Client secret. Download json and save as credentials.json in your repository.</li>
 <br>
 Step 4: Run py quickstart.py in your terminal. (I usually do this in Visual Studio Code.) 
-<li>You will likely face a Access blocked page with Error 400. Click on error details and copy the redirect_uri (http://localhost:XXXXX/). </li>
+<li>You will likely face an Access blocked page with Error 400. Click on error details and copy the redirect_uri (http://localhost:XXXXX/). </li>
 <li>Go to Credentials in Google Cloud Console <a href="https://console.cloud.google.com/apis/credentials/">Link</a> >
 Click on the OAuth 2.0 Client ID created for this project. Under Authorized redirect URIs, add the localhost information you copied earlier. </li>
 <li>Go back to your terminal and click on the link provided to restart the authorization process. The page will now say "Google hasn't verified this app". Click continue until you reach a page that says "The authentication flow has completed". A token.json file will be created in your repository.</li>
 <br>
-Step 5: Run py create.py in your terminal. The page will say "Google hasn't verified this app". Click continue until you reach a page that says "The authentication flow has completed". A storage.json file will be created in your repository. Also, check and confirma that an event would have been created in your repository for 15 Dec 2022.
+Step 5: From the token.json file, take note of the refresh_token, client_id, and client_secret values. Navigate to your github repository settings and click on secrets > actions. Add 3 new repository secrets with names REFRESHTOKEN, CLIENTID, CLIENTSECRET and values as per what is in the token.json file.
 
-Step 6: Push your updates to your github repo. Check that your workflow runs with no error under Actions in github.
+Step 6: Once done, push all updates to your github repo. Check that your workflow runs with no error under Actions in github. And a new event with the details in event.py will be created in your calendar.
 
 
 ### Workflow Diagram:

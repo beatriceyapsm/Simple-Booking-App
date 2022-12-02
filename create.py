@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import datetime
 import os.path
+import os
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -18,15 +19,13 @@ try:
 except ImportError:
     flags = None
 
-# If modifying these scopes, delete the file token.json.
+# Get environment variables
+REFRESHTOKEN= os.environ.get("REFRESHTOKEN")
+CLIENTID= os.environ.get("CLIENTID")
+CLIENTSECRET= os.environ.get("CLIENTSECRET")
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-store= file.Storage('storage.json')
-creds=store.get()
-if not creds or creds.invalid:
-    flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
-    creds = tools.run_flow(flow, store, flags) \
-        if flags else tools.run(flow, store)
-service = build('calendar', 'v3', http=creds.authorize(Http()))
+creds = Credentials("",refresh_token=REFRESHTOKEN, token_uri ="https://oauth2.googleapis.com/token", client_id= CLIENTID , client_secret=CLIENTSECRET, scopes=SCOPES)
+service = build('calendar', 'v3', credentials=creds)
 
 GMT_OFF = '+08:00'      # PDT/MST/GMT-7
 EVENT = {'summary': str(x),

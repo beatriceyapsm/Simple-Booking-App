@@ -20,4 +20,7 @@ jobs:
         run: |
           python create.py
         env:
+          REFRESHTOKEN: ${{ secrets.REFRESHTOKEN }}
+          CLIENTID: ${{ secrets.CLIENTID }}
+          CLIENTSECRET: ${{ secrets.CLIENTSECRET }}
           AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
